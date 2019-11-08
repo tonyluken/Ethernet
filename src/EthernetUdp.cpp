@@ -184,6 +184,7 @@ uint8_t EthernetUDP::beginMulticast(IPAddress ip, uint16_t port)
 	if (sockindex < MAX_SOCK_NUM) Ethernet.socketClose(sockindex);
 	sockindex = Ethernet.socketBeginMulticast(SnMR::UDP | SnMR::MULTI, ip, port);
 	if (sockindex >= MAX_SOCK_NUM) return 0;
+	_offset = 0;
 	_port = port;
 	_remaining = 0;
 	return 1;
